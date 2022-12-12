@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LaneMVCSite.Models.AerialVehicle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentAltitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.engineStarted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFlying)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxAltitude)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentAltitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.engineStarted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFlying)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxAltitude)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {  id=item.id  }) |
+                @Html.ActionLink("Take off", "TakeOff", new {id=item.id}) |
+                @Html.ActionLink("Fly up", "FlyUp", new {id=item.id}) |
+                @Html.ActionLink("Fly down", "FlyDown", new {id=item.id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
